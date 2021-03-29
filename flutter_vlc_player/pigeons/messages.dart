@@ -163,6 +163,8 @@ abstract class VlcPlayerApi {
   void setPlaybackSpeed(PlaybackSpeedMessage msg);
   PlaybackSpeedMessage getPlaybackSpeed(TextureMessage msg);
   SnapshotMessage takeSnapshot(TextureMessage msg);
+  BooleanMessage startRecord(TextureMessage msg);
+  SnapshotMessage stopRecord(TextureMessage msg);
   // captions & subtitles
   TrackCountMessage getSpuTracksCount(TextureMessage msg);
   SpuTracksMessage getSpuTracks(TextureMessage msg);

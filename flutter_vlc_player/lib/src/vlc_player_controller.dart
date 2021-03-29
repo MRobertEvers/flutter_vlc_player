@@ -799,6 +799,20 @@ class VlcPlayerController extends ValueNotifier<VlcPlayerValue> {
     return await vlcPlayerPlatform.takeSnapshot(_viewId);
   }
 
+  /// Returns true if success.
+  ///
+  Future<bool?> startRecord() async {
+    _throwIfNotInitialized('startRecord');
+    return await vlcPlayerPlatform.startRecord(_viewId);
+  }
+
+  /// Returns string
+  ///
+  Future<String?> stopRecord() async {
+    _throwIfNotInitialized('stopRecord');
+    return await vlcPlayerPlatform.stopRecord(_viewId);
+  }
+
   /// Start vlc cast discovery to find external display devices (chromecast)
   /// By setting serviceName, the vlc discovers renderer with that service
   Future<void> startRendererScanning({String? rendererService}) async {

@@ -32,6 +32,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Calendar;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+
 
 final class FlutterVlcPlayer implements PlatformView {
 
@@ -625,6 +629,25 @@ final class FlutterVlcPlayer implements PlatformView {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
         return Base64.encodeToString(outputStream.toByteArray(), Base64.NO_WRAP);
+    }
+
+    Boolean startRecord() {
+        // https://code.videolan.org/videolan/vlc-android/-/blob/master/libvlc/src/org/videolan/libvlc/MediaPlayer.java
+        /**
+        * Start/stop recording
+        *
+        * @param directory path of the recording directory or null to stop
+        * recording
+        * @return true on success.
+        */
+        return mediaPlayer.record(context.getFilesDir().getAbsolutePath());
+    }
+
+    String stopRecord() {
+        Boolean success = mediaPlayer.record(null);
+
+        // MRE: TODO: Return path?
+        return "";
     }
 
     private void log(String message) {

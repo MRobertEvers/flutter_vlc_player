@@ -108,7 +108,8 @@ class VlcPlayerWithControlsState extends State<VlcPlayerWithControls>
                     Stack(
                       children: [
                         IconButton(
-                          tooltip: 'Get Subtitle Tracks',
+                          // MRE: TODO: Fix
+                          tooltip: 'Stop Record',
                           icon: Icon(Icons.closed_caption),
                           color: Colors.white,
                           onPressed: _getSubtitleTracks,
@@ -142,7 +143,8 @@ class VlcPlayerWithControlsState extends State<VlcPlayerWithControls>
                     Stack(
                       children: [
                         IconButton(
-                          tooltip: 'Get Audio Tracks',
+                          // MRE: TODO: Fix
+                          tooltip: 'Start Record',
                           icon: Icon(Icons.audiotrack),
                           color: Colors.white,
                           onPressed: _getAudioTracks,
@@ -387,6 +389,9 @@ class VlcPlayerWithControlsState extends State<VlcPlayerWithControls>
   }
 
   void _getSubtitleTracks() async {
+    // MRE: TODO: FIX
+    await _controller.stopRecord();
+    return;
     if (!_controller.value.isPlaying) return;
 
     var subtitleTracks = await _controller.getSpuTracks();
@@ -429,6 +434,9 @@ class VlcPlayerWithControlsState extends State<VlcPlayerWithControls>
   }
 
   void _getAudioTracks() async {
+    // MRE: TODO: FIX
+    await _controller.startRecord();
+    return;
     if (!_controller.value.isPlaying) return;
 
     var audioTracks = await _controller.getAudioTracks();

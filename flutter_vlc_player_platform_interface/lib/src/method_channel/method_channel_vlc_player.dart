@@ -450,6 +450,22 @@ class MethodChannelVlcPlayer extends VlcPlayerPlatform {
     return imageBytes;
   }
 
+    /// Returns true if success.
+  ///
+  Future<bool?> startRecord(int textureId) async {
+    var response =
+      await _api.startRecord(TextureMessage()..textureId = textureId);
+    return response.result;
+  }
+
+  /// Returns string
+  ///
+  Future<String?> stopRecord(int textureId) async {
+    var response =
+      await _api.stopRecord(TextureMessage()..textureId = textureId);
+    return response.snapshot;
+  }
+
   @override
   Future<List<String>> getAvailableRendererServices(int textureId) async {
     var response = await _api

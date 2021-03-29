@@ -302,6 +302,18 @@ abstract class VlcPlayerPlatform extends PlatformInterface {
     throw _unimplemented('takeSnapshot');
   }
 
+  /// Returns true if success.
+  ///
+  Future<bool?> startRecord(int viewId) async {
+    throw _unimplemented('startRecord');
+  }
+
+  /// Returns string
+  ///
+  Future<String?> stopRecord(int viewId) async {
+    throw _unimplemented('stopRecord');
+  }
+
   /// Returns list of all avialble vlc renderer services
   Future<List<String>> getAvailableRendererServices(int viewId) {
     throw _unimplemented('getAvailableRendererServices');
