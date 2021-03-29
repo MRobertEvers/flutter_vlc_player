@@ -4,6 +4,25 @@ This is a fork of the Flutter VLC repo. This fork adds the messages to start and
 
 See original [readme](./main-README.md).
 
+## Android
+
+Files are saved to App local files then moved to the media library.
+
+In Flutter, using the `path_provider` library, the default directory that recordings are saved can be found by `getApplicationSupportDirectory();`
+
+```
+import 'package:path_provider/path_provider.dart';
+
+void print_files() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final Directory directory = await getApplicationSupportDirectory();
+  await for (var entity in directory.list(recursive: true, followLinks: false)) 
+  {
+    print(entity.path);
+  }
+}
+```
+
 ## Notes
 
 ## Pigeons Messages
